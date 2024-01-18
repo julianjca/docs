@@ -1,0 +1,26 @@
+---
+title: "Security and privacy"
+description: ""
+---
+
+## Wallet Security
+
+When joining Towns, you will sign in with your Ethereum Goerli network wallet. However, this will not grant Towns access to your wallet’s tokens or funds. You will sign messages to demonstrate token ownership when joining gated spaces in the app.
+
+## Chat Privacy
+
+All chats in Towns are end-to-end encrypted, meaning only channel members are able to read the history of the channels to which they belong.
+
+Towns encryption is based on the Olm and Megolm protocols used in the Matrix ecosystem. During the alpha phase of our product, a modified Matrix server provides the backend that allows Towns users to connect with one another.
+
+Towns users can view the full chat history of any channel they join. This trades off the cryptographic quality of “perfect forward secrecy” - in which keys are frequently changed - for greater usability in Towns communities.
+
+Our backend prevents eavesdropping by verifying two key facts about users:
+
+1. Users own the Ethereum identity they claim, through the use of the Sign-In With Ethereum protocol. 2) Users are entitled to enter towns and channels based on their wallet holdings.
+
+At present, some chat metadata may not be encrypted, such as emoji reactions.
+
+We have many exciting changes planned to further improve the security, scalability, and decentralization of chat encryption in Towns.
+
+To report security issues with Towns, please send an e-mail to [security@towns.com](mailto:security@towns.com).

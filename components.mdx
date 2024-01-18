@@ -1,0 +1,46 @@
+---
+title: "Components"
+description: "At a high level, the Towns system consists of three components: smart contracts, a decentralized network of nodes, and the messaging app built on the Towns protocol."
+---
+
+> Towns is under development. System details are likely to change.
+
+## Smart Contracts
+
+With Towns smart contracts, you can program your town square. For more information, see [smart contracts](/smart-contracts).
+
+## Nodes
+
+Towns nodes operate on a decentralized proof-of-stake network. Messages are encrypted and stored as events in replicated DAGs. Validation and other high-value actions happen on-chain.
+
+In Towns, a node is really a node bundle: a server, a database, and a node resolver. The node bundle will be packaged as a Docker file for easier deployment. A node operator guide will be available in later releases of Towns.
+
+## App
+
+The Towns app — a messaging app with wallet integration — illustrates the power of the Towns protocol.
+
+In the future, the sample-app directory in the GitHub repo will contain the app code. You’ll be able to step through the READMEs to explore the Towns protocol and deploy local components and tools (smart contracts, Dendrite server, blockchain). You’ll be able to adapt the sample-app to suit your community’s needs — craft your own use cases and help the protocol grow. To be one of the first users of the app, sign up for alpha access.
+
+### Networks
+
+During alpha, the Towns app will run on the Göerli testnet. The app will move to the Ethereum mainnet as of the beta release.
+
+When Towns moves into the beta phase, data and smart contracts will not be moved from Göerli to mainnet. Use the alpha release for testing purposes only.
+
+### Key concepts
+
+The app uses these concepts:
+
+- **Space**: A representation of a community. A space can be thought of as a community’s identity within Towns.
+- **Channel**: A channel groups conversations and members according to organizing principles that you set. You can create channels that correspond to topics and teams, or that collect data through integrations (like a channel of GitHub commits) — anything you like.
+- **Entitlements**, roles, and permissions: Towns supports complex logic for user roles and permissions. For more information, see entitlements.
+
+### Decentralized Chat Server
+
+Each Towns node has a decentralized chat server. Chat message communication is distributed across a peer-to-peer network, where each node is connected to several other nodes.
+
+One of the advantages of a decentralized chat server is that it provides greater privacy and security because the messages are encrypted and distributed across the network. It also ensures that there is no central point of control or censorship. It is our philosophy that all Towns users are free from surveillance or repression.
+
+For our alpha release, we have built the decentralized chat server using the Matrix protocol. We have a fork of the Matrix Dendrite implementation. In our fork, we have added authentication code for signing in with your Ethereum digital wallet via the sign-in with Ethereum protocol. We have also added authorization code that allows you to join a town, read & write messages, or redact messages based on your wallet’s assets on the blockchain.
+
+Post our alpha release, our server platform may be replaced or changed as we make progress in our Proof-of-Authority (PoA) validation. PoA will give Towns users the assurance that their messages are being delivered honestly by the nodes, and they are not being unfairly censored by a node.

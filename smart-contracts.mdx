@@ -1,0 +1,120 @@
+---
+title: "Smart Contracts"
+description: ""
+---
+
+## Introduction
+
+Towns contracts are composable, extensible, and upgradable. Use them to set community rules, define custom business models, and craft your own vision of the Towns protocol.
+
+During the alpha period, the Towns smart contracts are deployed on Sepolia. At beta, they will be deployed on the Ethereum mainnet.
+
+- SpaceFactory: [0x59E16E32040Af97E56244562b569a244D3e59342](https://blockscan.com/address/0x59E16E32040Af97E56244562b569a244D3e59342)
+- Space: [0x2f5E8F6Fb7EcF63d13C13B698d1e0B3EA4Ef604B](https://blockscan.com/address/0x2f5E8F6Fb7EcF63d13C13B698d1e0B3EA4Ef604B)
+- TokenEntitlement: [0x961E189e52d626DC075ed3D37f9b25bb3590Be7b](https://blockscan.com/address/0x961E189e52d626DC075ed3D37f9b25bb3590Be7b)
+- UserEntitlement: [0xC30448678407099A6b1695d6D41128EAEC47692F](https://blockscan.com/address/0xC30448678407099A6b1695d6D41128EAEC47692F)
+
+Each Towns space also has its own Space Contract.
+
+## Space factory
+
+#### `<SpaceFactory.sol>`
+
+Towns uses a factory model to create and manage spaces. Each space gets deployed to its own contract address.
+
+#### `<createSpace>`
+
+The `<createSpace>` function is the heart of the Towns space factory. It requires an ID generated from the given chat protocol. The space creation process includes the following steps: Map the space’s network ID to its Towns address
+
+- Set permissions
+- Mint the space token
+- Set the space owner and entitle them to the space token
+- Deploy the space contract, including entitlement modules
+
+#### `<addOwnerPermissions>`
+
+The `<addOwnerPermissions>` function adds a permission to the owner role for a given space.
+
+#### `<getOwnerPermissions>`
+
+The `<getOwnerPermissions>` function returns all of the permissions for the owner of a given space.
+
+#### `<updateImplementations>`
+
+The `<updateImplementations>` function allows for upgrading the underlying space logic in entitlement modules for a given space while retaining state. The space has control to decide who can grade implementation for its own space.
+
+## Space contract
+
+Each Towns community is powered by its space contract. The space is a key concept in Towns: it represents a community’s identity and facilitates governance. You can think of spaces as composable, on-chain primitives for communities.
+
+### Key functions
+
+#### `<createChannel>`
+
+The `<createChannel>` function creates a channel within a given space. It requires an ID generated from the given chat protocol.
+
+#### `<setChannelAccess>`
+
+The `<setChannelAccess>` sets whether a channel is enabled or disabled. A disabled channel would deactivate the channel for its users.
+
+#### `<createRole>`
+
+The `<createRole>` function creates a role within a given space.
+
+#### `<getRole>`
+
+The `<getRole>` function returns a role within a given space by ID.
+
+#### `<removeRole>`
+
+The `<removeRole>` removes a role within a given space.
+
+#### `<addPermissionToRole>`
+
+The `<addPermissionToRole>` function sets a permission to a role within a given space.
+
+#### `<getPermissionToRole>`
+
+The `<getPermissionToRole>` gets a permission from a role within a given space.
+
+#### `<removePermissionToRole>`
+
+The `<removePermissionToRole>` function removes a permission from a role within a given space.
+
+`<isEntitled>` (see next section)
+
+#### `<upgradeTo>`
+
+The `<upgradeTo>` function sets a new implementation address for the space factory itself.
+
+#### Entitlements
+
+Entitlements help you control access and manage user permissions. For more information, see entitlements.
+
+## Space Owner Contract
+
+#### `<SpaceOwner.sol>`
+
+The `<SpaceOwner.sol>` contract is a convenience contract for minting and owning a space as an NFT.
+
+## Upgradability
+
+Towns smart contracts are upgradable, alleviating a common pain point of blockchain development.
+
+Implementation addresses: Each new contract version has a new implementation address; the previous version is not affected.
+State preserved: Space “state” is preserved with each upgrade — you won’t need to redeploy contracts or redeploy spaces to Dendrite.
+Opt in: As upgrades become available, space owners can opt in or skip the upgrade. In this way, upgradability helps to ensure that communities retain ownership and control of their Towns spaces.
+
+## Other Towns smart contracts
+
+### Governance
+
+Coming soon! The Towns DAO will govern all parts of the smart contracts and protocol. Documentation of governance contracts will be available in the future.
+
+### Node manager
+
+Coming soon! The Towns node manager contract defines rules and provides functions for managing nodes, including registering, validating, and checkpointing.
+
+### Learn more
+
+Coming soon! Towns on Etherscan.
